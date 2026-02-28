@@ -1,0 +1,40 @@
+# The URL the site will be built for
+base_url = "https://mun-logadan.github.io"
+title = "Mun logadan"
+description = "A blog"
+theme = "apollo"
+
+compile_sass = true
+build_search_index = true
+taxonomies = [{ name = "tags" }]
+
+[markdown.highlighting]
+style = "class"
+light_theme = "github-light"
+dark_theme = "github-dark"
+error_on_missing_language = true
+
+[extra]
+toc = true
+use_cdn = false
+fancy_code = true
+dynamic_note = true
+mathjax = true
+mathjax_dollar_inline_enable = true
+theme = "toggle"
+repo_view = true
+repo_url = "https://github.com/mun-logadan/mun-logadan.github.io"
+menu = [
+  { name = "/archive", url = "/archive", weight = 1 },
+]
+socials = []
+
+[extra.analytics]
+enabled = false
+
+[search]
+include_title = true
+include_description = true
+include_path = true
+include_content = true
+index_format = "elasticlunr_json"
