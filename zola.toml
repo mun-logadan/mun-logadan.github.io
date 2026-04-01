@@ -21,6 +21,7 @@ fancy_code = true
 dynamic_note = true
 mathjax = true
 mathjax_dollar_inline_enable = true
+stylesheets = ["custom.css"]
 theme = "toggle"
 repo_view = true
 repo_url = "https://github.com/mun-logadan/mun-logadan.github.io"
