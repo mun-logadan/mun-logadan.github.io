@@ -1,0 +1,12 @@
+.footnote-definition {
+  display: flex;
+  gap: 0.4em;
+}
+
+.footnote-definition-label {
+  flex-shrink: 0;
+}
+
+.footnote-definition p {
+  margin: 0;
+}
