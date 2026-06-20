@@ -114,6 +114,8 @@ If you have any good ideas, please let me know! For now, raising an issue on [th
 repo](https://github.com/mun-logadan/mun-logadan.github.io) would be
 great – I've yet to decide what other contact info to put here.
 
+----
+
 [^1]: [HLE paper on arXiv](https://arxiv.org/abs/2501.14249)
 [^2]: They [only reported performance](https://z.ai/blog/glm-5) on the text-only subset (i.e., removed any questions containing
     images), so this isn't necessarily comparable with the other models on the [HuggingFace
