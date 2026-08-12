@@ -10,3 +10,9 @@
 .footnote-definition p {
   margin: 0;
 }
+
+main article .body,
+main article .li,
+main article blockquote {
+  text-align: justify;
+}
