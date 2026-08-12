@@ -88,14 +88,16 @@
     </div>
 {% endmacro content %}
 
+{% block left_content %}
+    {# Optional table of contents #}
+    {% if config.extra.toc | default(value=false) and page.toc %}
+        {% include "partials/toc.html" %}
+    {% endif %}
+{% endblock left_content %}
 
 {% block main_content %}
     {{ self::content(page=page) }}
 {% endblock main_content %}
 
 {% block right_content %}
-    {# Optional table of contents #}
-    {% if config.extra.toc | default(value=false) and page.toc %}
-        {% include "partials/toc.html" %}
-    {% endif %}
 {% endblock right_content %}
