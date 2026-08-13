@@ -16,6 +16,7 @@ error_on_missing_language = true
 
 [extra]
 toc = true
+favicon = "favicon.svg"
 use_cdn = false
 fancy_code = true
 dynamic_note = true
