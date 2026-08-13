@@ -13,4 +13,13 @@
 
 {% block main_content %}
     {{ self::home_page(section=section) }}
+
+    {% set archive = get_section(path="archive/_index.md") %}
+    {% set recent = archive.pages | slice(end=5) %}
+    <div class="recent-posts">
+        <h2 class="recent-posts-title">Recent posts</h2>
+        <main class="post-list">
+            {{ post_macros::list_posts(pages=recent) }}
+        </main>
+    </div>
 {% endblock main_content %}
