@@ -1,5 +1,5 @@
 +++
-title = "Why does Opus 5 feel worse?"
+title = "Why does Opus 5 feel worse to work with?"
 path = "why-does-opus-5-feel-worse"
 date = "2026-08-14"
 +++
