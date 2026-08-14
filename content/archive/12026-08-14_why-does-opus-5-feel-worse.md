@@ -1,0 +1,43 @@
++++
+title = "Why does Opus 5 feel worse?"
+path = "why-does-opus-5-feel-worse"
+date = "2026-08-14"
++++
+
+# Why does Opus 5 feel worse to work with?
+
+In my opinion and that of the colleagues I've spoken with, working with Opus 5 feels like a downgrade compared to Opus
+4.7, Opus 4.8, and Fable.
+
+I'm not claiming a step backwards capabilities – it *is* a more capable model than Opus 4.7 and Opus 4.8 and even rivals
+Fable in benchmarks, yet these other models feel better to work with. I believe this is because they:
+  - stop and ask questions if my intent was unclear,
+  - don't make assumptions without checking,
+  - and don't reinterpret or update my plans without asking.
+
+Because of this, they don't require the careful babysitting that Opus 5 does.
+
+# Baseless speculation
+
+I suspect this is the result of two compounding forces at Anthropic, and in current frontier labs in general.
+
+First, the desire to create a self-improving AI that is capable of recursively bootstrapping itself to AGI/ASI.
+
+Second, the goal of scoring highly on benchmarks. Although it's an open secret that many benchmark tasks are
+ill-defined, unfair, hackable, or otherwise broken, a good benchmark task is self-contained. It can be solved. It
+doesn't require hints, reading the task creator's mind, or outside information to pass.
+
+That doesn't mean a good task can only have one correct answer, just that it should score *all* unambiguously correct
+answers equally.
+
+Selecting for models that do well on benchmarks (and indeed training for them or on RLVR tasks in general) inherently
+selects for models that make bold, usually-correct assumptions in the face of ambiguity. It penalizes models with a
+tendency to stop and ask for clarification or direction.
+
+Unfortuantely, that's exactly what most of us want from a coding agent.
+
+Try as you might, it's nearly impossible to get all of the context, intentions, business implications, budget
+constraints, and what-have-you all written down and accessible to a coding agent at once. There will always, invariably,
+be ambiguity and choices to be made, and it is *nice* to know that an agent will stop and ask in high-risk cases.
+
+Real life just isn't a benchmark. There isn't a guaranteed right answer to every question, nor even a set of right answers, and with real-life consequences, I really do not want an agent taking its best guess!
