@@ -9,7 +9,7 @@ date = "2026-08-14"
 In my opinion and that of the colleagues I've spoken with, working with Opus 5 feels like a downgrade compared to Opus
 4.7, Opus 4.8, and Fable.
 
-I'm not claiming a step backwards capabilities – it *is* a more capable model than Opus 4.7 and Opus 4.8 and even rivals
+I'm not claiming a step backwards in capabilities – it *is* a more capable model than Opus 4.7 and Opus 4.8 and even rivals
 Fable in benchmarks, yet these other models feel better to work with. I believe this is because they:
   - stop and ask questions if my intent was unclear,
   - don't make assumptions without checking,
@@ -23,7 +23,7 @@ I suspect this is the result of two compounding forces at Anthropic, and in curr
 
 First, the desire to create a self-improving AI that is capable of recursively bootstrapping itself to AGI/ASI.
 
-Second, the goal of scoring highly on benchmarks. Although it's an open secret that many benchmark tasks are
+Second, the pressure to score highly on benchmarks. Although it's an open secret that many benchmark tasks are
 ill-defined, unfair, hackable, or otherwise broken, a good benchmark task is self-contained. It can be solved. It
 doesn't require hints, reading the task creator's mind, or outside information to pass.
 
@@ -34,10 +34,11 @@ Selecting for models that do well on benchmarks (and indeed training for them or
 selects for models that make bold, usually-correct assumptions in the face of ambiguity. It penalizes models with a
 tendency to stop and ask for clarification or direction.
 
-Unfortuantely, that's exactly what most of us want from a coding agent.
+Unfortunately, that's exactly what most of us want from a coding agent.
 
-Try as you might, it's nearly impossible to get all of the context, intentions, business implications, budget
-constraints, and what-have-you all written down and accessible to a coding agent at once. There will always, invariably,
-be ambiguity and choices to be made, and it is *nice* to know that an agent will stop and ask in high-risk cases.
+Try as you might, it's nearly impossible to get the entirety of the context, intentions, business implications, budget
+constraints, and what-have-you written down and accessible to a coding agent. There will invariably
+be ambiguity and choices to be made, and it is *nice* to know that an agent will stop and ask when needed.
 
-Real life just isn't a benchmark. There isn't a guaranteed right answer to every question, nor even a set of right answers, and with real-life consequences, I really do not want an agent taking its best guess!
+Real life just isn't a benchmark. There isn't a guaranteed right answer to every question, nor even a set of right
+answers, and with real-life consequences on the line, I do not want an agent taking its best guess!
