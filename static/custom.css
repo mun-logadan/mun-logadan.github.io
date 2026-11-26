@@ -1,6 +1,7 @@
 .footnote-definition {
   display: flex;
   gap: 0.4em;
+  margin-top: 1em;
 }
 
 .footnote-definition-label {
