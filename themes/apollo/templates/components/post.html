@@ -1,4 +1,4 @@
-{% macro list_post(page) %}
+{% component post.list_post(page: map) %}
     <li class="list-item">
         <section>
             <div class="post-header">
@@ -32,24 +32,24 @@
             </div>
         </section>
     </li>
-{% endmacro list_post %}
+{% endcomponent post.list_post %}
 
-{% macro list_posts(pages) %}
+{% component post.list_posts(pages: array) %}
     <ul>
         {%- for page in pages %}
-            {{ post_macros::list_post(page=page) }}
+            {{<post.list_post page={page} />}}
         {% endfor -%}
     </ul>
-{% endmacro list_posts %}
+{% endcomponent post.list_posts %}
 
-{% macro page_header(title) %}
+{% component post.page_header(title: string) %}
     {% if title %}
         <div class="page-header">
             {{ title }}
         </div>
     {% endif %}
-{% endmacro page_header %}
+{% endcomponent post.page_header %}
 
-{% macro site_title() %}
+{% component post.site_title(config: map) %}
     {{ config.title | default(value="Home") }}
-{% endmacro %}
+{% endcomponent post.site_title %}

@@ -1,4 +1,14 @@
-{% macro icon_button(href, text, icon="", icon_svg="", class="", target="_blank", rel="noopener", disabled=false, icon_path="icons/social/") %}
+{% component ui.icon_button(
+href: string,
+text: string,
+icon: string = "",
+icon_svg: string = "",
+class: string = "",
+target: string = "_blank",
+rel: string = "noopener",
+disabled: bool = false,
+icon_path: string = "icons/social/"
+) %}
     {% if disabled %}
         <span class="icon-button {{ class }} disabled" aria-disabled="true">
             {% if icon %}
@@ -21,4 +31,4 @@
             {{ text }}
         </a>
     {% endif %}
-{% endmacro icon_button %}
+{% endcomponent ui.icon_button %}

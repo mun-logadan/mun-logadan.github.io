@@ -1,5 +1,3 @@
-{% import "macros/macros.html" as post_macros %}
-
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,7 +9,7 @@
               content="{{ config.extra.fediverse_creator }}" />
     {% endif %}
 
-    {% if page.extra.meta %}
+    {% if page?.extra?.meta %}
         <!-- the meta data config goes here  -->
         {% for data in page.extra.meta %}
             <meta {% for key, value in data %} {% if key == "property" and value == "og:title" %} {% set_global page_has_og_title = true -%} {% endif %}
@@ -26,16 +24,16 @@
     {# Site title #}
     {% set current_path = current_path | default(value="/") %}
     {% if current_path == "/" %}
-        <title>{{ post_macros::site_title() }}</title>
+        <title>{{<post.site_title config={config} />}}</title>
         {% if not page_has_og_title %}
-            <meta property="og:title" content="{{ post_macros::site_title() }}" />
+            <meta property="og:title" content="{{<post.site_title config={config} />}}" />
         {% endif %}
 
     {% else %}
         <title>
-            {% if page.title %}
+            {% if page?.title %}
                 {{ page.title }}
-            {% elif section.title %}
+            {% elif section?.title %}
                 {{ section.title }}
             {% elif config.title %}
                 {{ config.title }}
@@ -46,12 +44,12 @@
 
         {% if not page_has_og_title %}
             <meta property="og:title"
-                  content="{% if page.title -%}{{ page.title }}{% elif config.title -%}{{ config.title }}{% else -%}Post{% endif -%}" />
+                  content="{% if page?.title -%}{{ page.title }}{% elif config.title -%}{{ config.title }}{% else -%}Post{% endif -%}" />
         {% endif %}
     {% endif %}
 
     {% if not page_has_og_description %}
-        {% if page.description %}
+        {% if page?.description %}
             <meta property="og:description" content="{{ page.description }}" />
         {% elif config.description %}
             <meta property="og:description" content="{{ config.description }}" />
@@ -59,7 +57,7 @@
     {% endif %}
 
     {% if not page_has_description %}
-        {% if page.description %}
+        {% if page?.description %}
             <meta name="description" content="{{ page.description }}" />
         {% elif config.description %}
             <meta name="description" content="{{ config.description }}" />
@@ -84,22 +82,48 @@
         <link href={{ get_url(path="fonts.css") }} rel="stylesheet" />
     {% endif %}
 
-    {# Syntax theme #}
-    {% if config.markdown.highlight_code and config.markdown.highlight_theme == "css" %}
-        <link rel="stylesheet"
-              type="text/css"
-              href="/syntax-theme-dark.css"
-              media="(prefers-color-scheme: dark)" />
-        <link rel="stylesheet"
-              type="text/css"
-              href="/syntax-theme-light.css"
-              media="(prefers-color-scheme: light)" />
+    {% set theme = config.extra.theme | default(value="toggle") %}
+
+    {# Syntax theme - zola generates these from markdown.highlighting with style = "class" #}
+    {% if config.markdown?.highlighting?.style == "class" %}
+        {% if config.markdown.highlighting.theme %}
+            <link rel="stylesheet"
+                  type="text/css"
+                  href="{{ get_url(path='giallo.css') }}" />
+        {% elif theme == "dark" %}
+            <link rel="stylesheet"
+                  type="text/css"
+                  href="{{ get_url(path='giallo-dark.css') }}" />
+        {% elif theme == "light" %}
+            <link rel="stylesheet"
+                  type="text/css"
+                  href="{{ get_url(path='giallo-light.css') }}" />
+        {% elif theme == "auto" %}
+            <link rel="stylesheet"
+                  type="text/css"
+                  href="{{ get_url(path='giallo-dark.css') }}"
+                  media="(prefers-color-scheme: dark)" />
+            <link rel="stylesheet"
+                  type="text/css"
+                  href="{{ get_url(path='giallo-light.css') }}"
+                  media="(prefers-color-scheme: light)" />
+        {% elif theme == "toggle" %}
+            <link id="syntaxLightStyle"
+                  rel="stylesheet"
+                  type="text/css"
+                  href="{{ get_url(path='giallo-light.css') }}" />
+            <link id="syntaxDarkStyle"
+                  rel="stylesheet"
+                  type="text/css"
+                  href="{{ get_url(path='giallo-dark.css') }}"
+                  disabled />
+        {% endif %}
     {% endif %}
 
     {# Analytics #}
     {% if config.extra.analytics.enabled %}
-        {% if config.extra.analytics.umami.website_id %}
-            {% set website_id = config.extra.analytics.umami.website_id %}
+        {% if config.extra.analytics.umami?.website_id %}
+            {% set website_id = config.extra.analytics.umami?.website_id %}
             {% set host_url = config.extra.analytics.umami.host_url | default(value="https://api-gateway.umami.dev/") %}
 
             <script defer
@@ -108,8 +132,8 @@
                     data-host-url="{{ host_url }}"></script>
         {% endif %}
 
-        {% if config.extra.analytics.goatcounter.user %}
-            {% set user = config.extra.analytics.goatcounter.user %}
+        {% if config.extra.analytics.goatcounter?.user %}
+            {% set user = config.extra.analytics.goatcounter?.user %}
             {% set host = config.extra.analytics.goatcounter.host | default(value="goatcounter.com") %}
 
             <script data-goatcounter="https://{{ user }}.{{ host }}/count"
@@ -117,12 +141,12 @@
                     src="{{ get_url(path="js/count.js") }}"></script>
             <noscript>
                 {# EasyList blocks '.com/count?', so we have to use '.com//count' #}
-                <img src="https://{{ user }}.{{ host }}//count?p={{ current_path }}&t={{ page.title | default(value=config.title) }}" />
+                <img src="https://{{ user }}.{{ host }}//count?p={{ current_path }}&t={{ page?.title | default(value=config.title) }}" />
             </noscript>
         {% endif %}
 
-        {% if config.extra.analytics.google.tracking_id %}
-            {% set tracking_id = config.extra.analytics.google.tracking_id %}
+        {% if config.extra.analytics.google?.tracking_id %}
+            {% set tracking_id = config.extra.analytics.google?.tracking_id %}
 
             <!-- Google tag (gtag.js) -->
             <script async
@@ -177,19 +201,18 @@
             {% if feed_filenames == "atom.xml" %}
                 <link rel="alternate"
                       type="application/atom+xml"
-                      title="{{ post_macros::site_title() }}"
+                      title="{{<post.site_title config={config} />}}"
                       href="{{ get_url(path='atom.xml', trailing_slash=false) }}" />
             {% elif feed_filenames == "rss.xml" %}
                 <link rel="alternate"
                       type="application/rss+xml"
-                      title="{{ post_macros::site_title() }}"
+                      title="{{<post.site_title config={config} />}}"
                       href="{{ get_url(path='rss.xml', trailing_slash=false) }}" />
             {% endif %}
         {% endfor %}
     {% endif %}
 
 
-    {% set theme = config.extra.theme | default(value="toggle") %}
     {% if theme == "dark" %}
         <link rel="stylesheet"
               type="text/css"
