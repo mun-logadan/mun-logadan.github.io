@@ -90,16 +90,13 @@
     </div>
 {% endcomponent content %}
 
-{% block left_content %}
-    {# Optional table of contents #}
-    {% if config.extra?.toc | default(value=false) and page?.toc %}
-        {% include "partials/toc.html" %}
-    {% endif %}
-{% endblock left_content %}
-
 {% block main_content %}
     {{<content page={page} config={config} />}}
 {% endblock main_content %}
 
 {% block right_content %}
+    {# Optional table of contents #}
+    {% if config.extra?.toc | default(value=false) and page?.toc %}
+        {% include "partials/toc.html" %}
+    {% endif %}
 {% endblock right_content %}

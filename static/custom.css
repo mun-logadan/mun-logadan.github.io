@@ -57,3 +57,21 @@ table:has(thead) tbody tr:last-child td {
 table:has(thead) tbody td[style*="text-align: right"] {
   font-family: var(--mono-text-font), monospace;
 }
+
+/* Table of contents: sticky in the left column, not the right one, matching
+   the site's templates/page.html override. Upstream's main.css only makes
+   `body .right-content` sticky; from 992px up the layout is a flex row, so
+   these mirror what the theme's main.scss used to do. */
+@media (min-width: 992px) {
+  .left-content {
+    align-self: stretch;
+  }
+
+  .left-content .toc {
+    position: sticky;
+    top: 60px;
+    padding: 1em;
+    overflow-y: auto;
+    max-height: calc(100vh - 100px);
+  }
+}
