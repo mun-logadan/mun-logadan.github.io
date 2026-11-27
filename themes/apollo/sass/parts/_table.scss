@@ -3,28 +3,13 @@ table {
   border-collapse: collapse;
 }
 
-/* Markdown data tables (code-block tables have no header row).
-   LaTeX/booktabs style: centered, horizontal rules only — one thick rule
-   under the header, one at the top and one at the bottom, none between rows. */
-table:has(thead) {
-  margin: 1em auto; /* centers the table */
+table th {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+  font-size: large;
+}
 
-  th,
-  td {
-    padding: 6px 13px;
-    border: none;
-  }
-
-  th {
-    font-size: large;
-  }
-
-  thead th {
-    border-top: 2px solid currentColor;
-    border-bottom: 2px solid currentColor;
-  }
-
-  tbody tr:last-child td {
-    border-bottom: 2px solid currentColor;
-  }
+table td {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
 }

@@ -17,3 +17,43 @@ main article .li,
 main article blockquote {
   text-align: justify;
 }
+
+/* Tables. Kept here rather than in themes/apollo/sass so the theme can be
+   re-vendored from upstream without conflicts. Upstream draws a 1px grid
+   (`table th`, `table td` in main.css); these rules override it with a
+   LaTeX/booktabs look: centered, horizontal rules only — one thick rule
+   under the header, one at the top and one at the bottom, none between rows.
+   `:has(thead)` matches Markdown data tables only, never code-block tables. */
+table:has(thead) {
+  /* 2em above gives tables a bit more breathing room than the 1em that
+     body text uses between blocks; `auto` centers the table. */
+  margin: 2em auto 1em;
+}
+
+table:has(thead) th,
+table:has(thead) td {
+  padding: 6px 13px;
+  border: none;
+}
+
+table:has(thead) th {
+  font-size: large;
+}
+
+table:has(thead) thead th {
+  border-top: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+}
+
+table:has(thead) tbody tr:last-child td {
+  border-bottom: 2px solid currentColor;
+}
+
+/* Numeric table columns, monospaced.
+   Right-align a column in Markdown (`---:`) and pulldown-cmark stamps every
+   cell of it with style="text-align: right"; we key off that. No per-cell
+   markup, and a left-aligned column stays in the body font. Add `th` to the
+   selector if you want the header monospaced too. */
+table:has(thead) tbody td[style*="text-align: right"] {
+  font-family: var(--mono-text-font), monospace;
+}
