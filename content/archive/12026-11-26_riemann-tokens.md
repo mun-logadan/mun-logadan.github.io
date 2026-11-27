@@ -90,11 +90,8 @@ Strange, that's what my guess was before any of this.
 Because I'm feeling somewhat fed up with AI, and the way it's changing my life, hobbies, career, mind and dreams, I decided to
 write the code to do this myself the way I loved to program: Without AI assistance, in Neovim, thinking hard.
 
-It felt nice looking things up in the official docs, Linux man pages and StackOverflow et al.
-
-For some awful reason, I chose to do this in Bash, rather than in something that's a little easier to debug and make performant.
-I'm sure there are many people out there who could do so just as quickly as I could in Python – and Claude certainly could – but I'm not one of those people.
-In any case, here you go:
+It felt nice looking things up in the official docs, Linux man pages, StackOverflow, etc., and I specifically chose Bash
+so I'd have to look more up than I would in Python, for instance.
 
 ```bash
 #!/usr/bin/env bash
